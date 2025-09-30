@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adriana Sousa - Transformação Mental</title>
+    <!-- Preload das imagens críticas -->
+    <link rel="preload" as="image" href="https://pub-e40d9ad14e5a4e13b2bfe7e2ae67bb03.r2.dev/Adriana-vmake%20(1).png">
+    <link rel="preload" as="image" href="https://pub-e40d9ad14e5a4e13b2bfe7e2ae67bb03.r2.dev/Imagem%20do%20WhatsApp%20de%202025-09-23%20%C3%A0(s)%2015.21.04_61513830-vmake.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #F8F5F0;
+            --text: #33353A;
+            --accent: #D4AF37;
+            --dark: #1A2035;
+            --white: #ffffff;
+            --purple: #7C3AED;
+            --gold-gradient: linear-gradient(135deg, #D4AF37 0%, #FFD700 70%, #B8860B 100%);
+            --shadow-luxury: 0 15px 50px rgba(26, 32, 53, 0.2);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #F8F5F0 0%, #E8E5E0 100%);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            background-attachment: fixed;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-touch-callout: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Sistema de proteção avançado */
+        .protection-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 999999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            color: #ff4444;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            flex-direction: column;
+        }
+
+        .protection-overlay .warning-text {
+            font-size: 32px;
+            margin-bottom: 20px;
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .container {
+            max-width: 420px;
+            margin: 0 auto;
+            padding: 15px;
+            position: relative;
+        }
+
+        /* AVATAR SECTION */
+        .avatar-section {
+            text-align: center;
+            padding: 20px 15px 15px;
+            background: var(--white);
+            margin-bottom: 20px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-luxury);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            margin-top: 15px;
+            transition: all 1s ease;
+        }
+
+        .name {
+            font-size: 26px;
+            font-weight: 900;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 4px;
+        }
+
+        .specialty {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--purple);
+            margin-bottom: 12px;
+        }
+
+        .avatar-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            margin: 15px 0 20px 0;
+        }
+
+        .avatar {
+            width: 260px;
+            height: 390px;
+            object-fit: cover;
+            border-radius: 20px;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            box-shadow: var(--shadow-luxury);
+            transition: all 0.5s ease;
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+            will-change: transform;
+            pointer-events: none;
+            -webkit-user-drag: none;
+            -khtml-user-drag: none;
+            -moz-user-drag: none;
+            -o-user-drag: none;
+            user-drag: none;
+        }
+
+        .avatar-message {
+            position: absolute;
+            top: 28%;
+            left: 55%;
+            transform: translateX(-50%);
+            width: 140px;
+            font-size: 11px;
+            font-weight: 900;
+            color: var(--dark);
+            text-align: center;
+            opacity: 0;
+            transition: all 0.6s ease;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.9);
+            padding: 6px 8px;
+            background: transparent;
+            border-radius: 0;
+            line-height: 1.3;
+        }
+
+        .avatar-message.show {
+            opacity: 1;
+            transform: translateX(-50%) scale(1);
+        }
+
+        .avatar-message.shock {
+            color: #DC2626;
+            font-size: 13px;
+        }
+
+        /* CTA SECTION */
+        .cta-section {
+            display: none;
+            text-align: center;
+            padding: 25px 20px;
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: var(--shadow-luxury);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            margin-top: 20px;
+            opacity: 0;
+            transition: all 1s ease;
+        }
+
+        .cta-section.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .cta-title {
+            font-size: 24px;
+            font-weight: 900;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .cta-subtitle {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 25px;
+            line-height: 1.4;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--gold-gradient);
+            color: var(--dark);
+            text-decoration: none;
+            padding: 18px 35px;
+            border-radius: 16px;
+            font-size: 16px;
+            font-weight: 900;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-luxury);
+            margin-bottom: 15px;
+            cursor: pointer;
+            border: none;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.6);
+        }
+
+        .cta-disclaimer {
+            font-size: 12px;
+            color: #666;
+            font-weight: 600;
+        }
+
+        /* TYPEBOT CONTAINER */
+        .typebot-container {
+            display: none;
+            width: 100%;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+            background: var(--bg);
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        .typebot-container.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .typebot-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            frameborder: 0;
+        }
+
+        /* TRANSIÇÃO LIVRO ANTIGO */
+        .book-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: 9999;
+            display: none;
+            perspective: 1500px;
+            background: radial-gradient(circle, #2C1810 0%, #1A0F08 100%);
+        }
+
+        .book-container.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .book-page {
+            width: 90%;
+            max-width: 400px;
+            height: 80vh;
+            background: linear-gradient(135deg, #F4E4BC 0%, #E6D3A3 50%, #D4C294 100%);
+            border-radius: 8px 20px 20px 8px;
+            box-shadow: 
+                inset 0 0 30px rgba(139, 69, 19, 0.3),
+                0 10px 30px rgba(0, 0, 0, 0.5),
+                0 0 50px rgba(212, 175, 55, 0.4);
+            transform-origin: left center;
+            transform: rotateY(0deg);
+            transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .book-page.turning {
+            transform: rotateY(-160deg);
+        }
+
+        .book-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 2;
+            width: 80%;
+        }
+
+        .book-title {
+            font-family: 'Cinzel', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: #8B4513;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            letter-spacing: 2px;
+        }
+
+        .book-text {
+            font-family: 'Cinzel', serif;
+            font-size: 16px;
+            color: #5D2F0A;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .mystical-symbol {
+            font-size: 40px;
+            color: #D4AF37;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.6);
+            animation: mysticalGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes mysticalGlow {
+            0% { 
+                text-shadow: 0 0 10px rgba(212, 175, 55, 0.6);
+                transform: scale(1);
+            }
+            100% { 
+                text-shadow: 0 0 20px rgba(212, 175, 55, 0.9);
+                transform: scale(1.05);
+            }
+        }
+
+        @media (max-width: 359px) {
+            .container { padding: 12px; }
+            .avatar { width: 240px; height: 360px; }
+            .avatar-message { 
+                font-size: 10px; 
+                top: 26%; 
+                left: 52%; 
+                width: 130px; 
+            }
+            .cta-title { font-size: 20px; }
+            .cta-button { padding: 15px 25px; font-size: 14px; }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Sistema de proteção -->
+    <div class="protection-overlay" id="protectionOverlay">
+        <div class="warning-text">ACESSO NEGADO</div>
+        <div>Ação não permitida!</div>
+    </div>
+    
+    <!-- AVATAR SECTION -->
+    <div class="container" id="avatarContainer">
+        <div class="avatar-section">
+            <h1 class="name">ADRIANA SOUSA</h1>
+            <p class="specialty">Especialista em Transformação Mental</p>
+            
+            <div class="avatar-container">
+                <img src="https://pub-e40d9ad14e5a4e13b2bfe7e2ae67bb03.r2.dev/Adriana-vmake%20(1).png" 
+                     alt="Adriana Sousa" 
+                     class="avatar" 
+                     id="avatar"
+                     loading="eager">
+                
+                <div class="avatar-message" id="avatarMessage">
+                    Detectando...
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA SECTION -->
+        <div class="cta-section" id="ctaSection">
+            <h2 class="cta-title" id="ctaTitle">DESCOBRI SEU BLOQUEIO MENTAL</h2>
+            <p class="cta-subtitle" id="ctaSubtitle">Responda minha análise personalizada e desbloqueie seu potencial agora mesmo</p>
+            
+            <button class="cta-button" id="ctaButton" onclick="startTypebot()">
+                DESCOBRIR MEU PODER AGORA
+            </button>
+            
+            <div class="cta-disclaimer" id="ctaDisclaimer">
+                Análise personalizada e gratuita
+            </div>
+        </div>
+    </div>
+
+    <!-- TRANSIÇÃO LIVRO -->
+    <div class="book-container" id="bookContainer">
+        <div class="book-page" id="bookPage">
+            <div class="book-content">
+                <div class="mystical-symbol">☾ ✦ ☽</div>
+                <div class="book-title">LIVRO DA TRANSFORMAÇÃO</div>
+                <div class="book-text">Revelando os segredos ocultos da sua mente...</div>
+                <div class="mystical-symbol">⚡ ◆ ⚡</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TYPEBOT CONTAINER -->
+    <div class="typebot-container" id="typebotContainer">
+        <!-- Typebot será injetado aqui -->
+    </div>
+
+    <script>
+        // ==================== SISTEMA DE PROTEÇÃO AVANÇADO ====================
+        
+        (function() {
+            'use strict';
+            
+            let protectionActive = true;
+            let devToolsDetected = false;
+            let warningCount = 0;
+            let lastWarning = 0;
+            
+            // Função de overlay melhorada
+            function showProtectionOverlay(message, duration = 3000) {
+                const overlay = document.getElementById('protectionOverlay');
+                const warningText = overlay.querySelector('.warning-text');
+                const messageDiv = overlay.querySelector('div:last-child');
+                
+                warningText.textContent = 'ACESSO NEGADO';
+                messageDiv.textContent = message;
+                overlay.style.display = 'flex';
+                
+                setTimeout(() => {
+                    overlay.style.display = 'none';
+                }, duration);
+                
+                warningCount++;
+                lastWarning = Date.now();
+                
+                // Após 5 tentativas, redirecionar
+                if (warningCount >= 5) {
+                    setTimeout(() => {
+                        window.location.href = 'about:blank';
+                    }, 2000);
+                }
+            }
+            
+            // Bloqueio de teclas
+            document.addEventListener('keydown', function(e) {
+                if (!protectionActive) return;
+                
+                const blockedKeys = [
+                    123, // F12
+                    // Ctrl+Shift+I
+                    (e.ctrlKey && e.shiftKey && e.keyCode === 73),
+                    // Ctrl+Shift+J
+                    (e.ctrlKey && e.shiftKey && e.keyCode === 74),
+                    // Ctrl+U
+                    (e.ctrlKey && e.keyCode === 85),
+                    // Ctrl+Shift+C
+                    (e.ctrlKey && e.shiftKey && e.keyCode === 67),
+                    // Ctrl+A
+                    (e.ctrlKey && e.keyCode === 65),
+                    // Ctrl+S
+                    (e.ctrlKey && e.keyCode === 83),
+                    // Ctrl+P
+                    (e.ctrlKey && e.keyCode === 80),
+                    // F1-F11
+                    (e.keyCode >= 112 && e.keyCode <= 122)
+                ];
+                
+                if (blockedKeys.includes(true) || blockedKeys.includes(e.keyCode)) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    showProtectionOverlay('Tecla bloqueada para proteção!');
+                    return false;
+                }
+            });
+            
+            // Bloqueio de menu de contexto
+            document.addEventListener('contextmenu', function(e) {
+                if (!protectionActive) return;
+                e.preventDefault();
+                showProtectionOverlay('Menu de contexto desabilitado!');
+                return false;
+            });
+            
+            // Detecção de DevTools avançada
+            let threshold = 160;
+            setInterval(() => {
+                if (!protectionActive) return;
+                
+                const heightDiff = window.outerHeight - window.innerHeight;
+                const widthDiff = window.outerWidth - window.innerWidth;
+                
+                if (heightDiff > threshold || widthDiff > threshold) {
+                    if (!devToolsDetected) {
+                        devToolsDetected = true;
+                        showProtectionOverlay('DevTools detectado! Fechando...', 4000);
+                        
+                        // Tentar fechar a aba
+                        setTimeout(() => {
+                            try {
+                                window.close();
+                            } catch(e) {
+                                window.location.href = 'about:blank';
+                            }
+                        }, 3000);
+                    }
+                } else {
+                    devToolsDetected = false;
+                }
+            }, 500);
+            
+            // Bloqueio de seleção e arrastar
+            document.addEventListener('selectstart', (e) => {
+                if (!protectionActive) return true;
+                e.preventDefault();
+                return false;
+            });
+            
+            document.addEventListener('dragstart', (e) => {
+                if (!protectionActive) return true;
+                e.preventDefault();
+                return false;
+            });
+            
+            // Bloqueio de impressão
+            window.addEventListener('beforeprint', (e) => {
+                if (!protectionActive) return;
+                e.preventDefault();
+                showProtectionOverlay('Impressão bloqueada!');
+                return false;
+            });
+            
+            // Limpeza de console e warnings
+            const originalLog = console.log;
+            console.log = function() {
+                if (protectionActive) return;
+                originalLog.apply(console, arguments);
+            };
+            
+            // Console warning
+            console.log('%c⚠️ ÁREA PROTEGIDA ⚠️', 
+                'color: red; font-size: 50px; font-weight: bold; text-shadow: 2px 2px 4px black;');
+            console.log('%cEste conteúdo é protegido por direitos autorais.', 
+                'color: orange; font-size: 16px; font-weight: bold;');
+            
+            // Limpeza periódica do console
+            setInterval(() => {
+                if (protectionActive) {
+                    try {
+                        console.clear();
+                    } catch(e) {}
+                }
+            }, 3000);
+            
+            // Função para desabilitar proteção (desenvolvimento)
+            window.disableProtection = function() {
+                protectionActive = false;
+                console.log('Proteção desativada para desenvolvimento');
+            };
+            
+            // Detecção de tab focus (evita algumas tentativas de bypass)
+            document.addEventListener('visibilitychange', () => {
+                if (protectionActive && document.hidden) {
+                    setTimeout(() => {
+                        if (!document.hidden && Date.now() - lastWarning > 5000) {
+                            // Tab foi focada novamente após um tempo, possível tentativa de bypass
+                        }
+                    }, 100);
+                }
+            });
+            
+        })();
+        
+        // ==================== DADOS DOS ESTADOS COM FUSOS HORÁRIOS ====================
+        
+        const ESTADOS_CONFIG = {
+            // REGIÃO SUDESTE (UTC-3)
+            'SP': { sigla: 'SP', gentilico: 'Paulista', expressao: 'nossa' },
+            'RJ': { sigla: 'RJ', gentilico: 'Carioca', expressao: 'opa' },
+            'MG': { sigla: 'MG', gentilico: 'Mineiro', expressao: 'uai' },
+            'ES': { sigla: 'ES', gentilico: 'Capixaba', expressao: 'poxa' },
+
+            // REGIÃO SUL (UTC-3)
+            'RS': { sigla: 'RS', gentilico: 'Gaúcho', expressao: 'bah tchê' },
+            'PR': { sigla: 'PR', gentilico: 'Paranaense', expressao: 'opa' },
+            'SC': { sigla: 'SC', gentilico: 'Catarinense', expressao: 'ô meu' },
+
+            // REGIÃO NORDESTE (UTC-3)
+            'BA': { sigla: 'BA', gentilico: 'Baiano', expressao: 'óxi' },
+            'CE': { sigla: 'CE', gentilico: 'Cearense', expressao: 'eita' },
+            'PE': { sigla: 'PE', gentilico: 'Pernambucano', expressao: 'arretado' },
+            'AL': { sigla: 'AL', gentilico: 'Alagoano', expressao: 'óxe' },
+            'SE': { sigla: 'SE', gentilico: 'Sergipano', expressao: 'vixe' },
+            'PB': { sigla: 'PB', gentilico: 'Paraibano', expressao: 'vixe' },
+            'RN': { sigla: 'RN', gentilico: 'Potiguar', expressao: 'oxente' },
+            'PI': { sigla: 'PI', gentilico: 'Piauiense', expressao: 'ôh' },
+            'MA': { sigla: 'MA', gentilico: 'Maranhense', expressao: 'êh' },
+
+            // REGIÃO NORTE (Misturado: UTC-3, UTC-4, UTC-5)
+            'AM': { sigla: 'AM', gentilico: 'Amazonense', expressao: 'oi' },
+            'PA': { sigla: 'PA', gentilico: 'Paraense', expressao: 'oi' },
+            'AC': { sigla: 'AC', gentilico: 'Acreano', expressao: 'olá' },
+            'RO': { sigla: 'RO', gentilico: 'Rondoniense', expressao: 'oi' },
+            'RR': { sigla: 'RR', gentilico: 'Roraimense', expressao: 'oi' },
+            'AP': { sigla: 'AP', gentilico: 'Amapaense', expressao: 'oi' },
+            'TO': { sigla: 'TO', gentilico: 'Tocantinense', expressao: 'uai' },
+
+            // REGIÃO CENTRO-OESTE (UTC-3 e UTC-4)
+            'GO': { sigla: 'GO', gentilico: 'Goiano', expressao: 'uai' },
+            'MT': { sigla: 'MT', gentilico: 'Mato-grossense', expressao: 'opa' },
+            'MS': { sigla: 'MS', gentilico: 'Sul-mato-grossense', expressao: 'opa' },
+            'DF': { sigla: 'DF', gentilico: 'Brasiliense', expressao: 'oi' }
+        };
+
+        const CTAS_PERSONALIZADOS = {
+            'SP': {
+                titulo: 'PAULISTA, DECODIFIQUEI SEU PADRÃO MENTAL!',
+                subtitulo: 'Sua mente será reprogramada para o sucesso absoluto. Desperte seu potencial oculto agora!',
+                botao: 'DESPERTAR MEU POTENCIAL PAULISTA'
+            },
+            'RJ': {
+                titulo: 'CARIOCA, PEGUEI SUA LIMITAÇÃO MENTAL!',
+                subtitulo: 'Como as ondas moldam as pedras, sua mente será transformada. Liberte sua essência verdadeira!',
+                botao: 'LIBERAR MINHA ESSÊNCIA CARIOCA'
+            },
+            'MG': {
+                titulo: 'MINEIRO, ACHEI SUA TRAVA MENTAL!',
+                subtitulo: 'Sua mente será lapidada como diamante puro. Brilhe com todo seu poder interior!',
+                botao: 'LAPIDAR MEU DIAMANTE MENTAL'
+            },
+            'BA': {
+                titulo: 'BAIANO, DESCOBRI SEU BLOQUEIO!',
+                subtitulo: 'Sua energia será potencializada ao extremo. Desperte o gigante adormecido em você!',
+                botao: 'DESPERTAR MEU GIGANTE INTERIOR'
+            },
+            'RS': {
+                titulo: 'GAÚCHO, IDENTIFIQUEI SEU LIMITE!',
+                subtitulo: 'Sua determinação será multiplicada infinitamente. Conquiste tudo que você merece!',
+                botao: 'MULTIPLICAR MINHA DETERMINAÇÃO'
+            },
+            'default': {
+                titulo: 'DECODIFIQUEI SEU PADRÃO MENTAL!',
+                subtitulo: 'Sua mente será reprogramada para o sucesso absoluto. Desperte seu poder oculto!',
+                botao: 'DESPERTAR MEU PODER OCULTO'
+            }
+        };
+
+        // ==================== SISTEMA DE HORÁRIOS CONTEXTUAIS ====================
+        
+        const TIME_CONTEXTS = {
+            getTimeMessage: function(hour) {
+                if (hour >= 0 && hour <= 4) {
+                    const messages = [
+                        "Madrugadinha! Insônia ou acordou cedinho?",
+                        "Noite adentro! Que energia é essa?",
+                        "De madrugada! Mente inquieta?"
+                    ];
+                    return messages[Math.floor(Math.random() * messages.length)];
+                }
+                
+                if (hour >= 5 && hour <= 8) {
+                    const messages = [
+                        "Cedinho! Café quentinho na mesa?",
+                        "Manhãzinha! Começando o dia com energia?",
+                        "Cedo! Primeiro café do dia?"
+                    ];
+                    return messages[Math.floor(Math.random() * messages.length)];
+                }
+                
+                if (hour >= 9 && hour <= 10) {
+                    const messages = [
+                        "Meio da manhã! Produtividade total?",
+                        "Manhã avançando! Trabalho ou estudos?",
+                        "Manhã corrida! Focado nos objetivos?"
+                    ];
+                    return messages[Math.floor(Math.random() * messages.length)];
+                }
+                
+                if (hour >= 11 && hour <= 13) {
+                    const messages = [
+                        "Hora do rango! O que tem de gostoso hoje?",
+                        "Almoçando! Pausa sagrada do dia?",
+                        "Meio-dia! Hora de recarregar as energias?"
+                    ];
+                    return messages[Math.floor(Math.random() * messages.length)];
+                }
+                
+                if (hour >= 14 && hour <= 15) {
+                    const messages = [
+                        "Comecinho da tarde! Soninho pós-almoço?",
+                        "Início da tarde! Segunda parte do dia?",
+                        "Tarde começando! Digestão rolando?"
+                    ];
+                    return messages[Math.floor(Math.random() * messages.length)];
+                }
+                
+                if (hour >= 16 && hour <= 18) {
+                    const messages = [
+                        "Finalzinho da tarde! Quase hora de ir embora?",
+                        "Fim de tarde! Contando os minutos?",
+                        "Tarde avançada! Pensando no sofá de casa?"
+                    ];
+                    return messages[Math.floor(Math.random() * messages.length)];
+                }
+                
+                if (hour >= 19 && hour <= 20) {
+                    const messages = [
+                        "Comecinho da noite! Hora do jantar?",
+                        "Início da noite! Relaxando do dia?",
+                        "Noitinha chegando! Que delícia de horário!"
+                    ];
+                    return messages[Math.floor(Math.random() * messages.length)];
+                }
+                
+                if (hour >= 21 && hour <= 23) {
+                    const messages = [
+                        "Noitinha! Como foi o dia hoje?",
+                        "Final do dia! Hora de descansar?",
+                        "Noite! Merecido descanso chegando?"
+                    ];
+                    return messages[Math.floor(Math.random() * messages.length)];
+                }
+                
+                return "Que horário interessante!";
+            },
+            
+            getDayMessage: function(day) {
+                const days = {
+                    0: "Domingo!",
+                    1: "Segundona!", 
+                    2: "Terçou!",
+                    3: "Quarta!",
+                    4: "Quinta!",
+                    5: "Sextou!",
+                    6: "Sabadou!"
+                };
+                return days[day] || "Que dia!";
+            }
+        };
+
+        // ==================== DETECÇÃO DE LOCALIZAÇÃO ====================
+        
+        async function detectUserLocation() {
+            try {
+                // Tentar APIs em sequência
+                const APIs = [
+                    'https://ipinfo.io/json?token=50aa9ee780c6f0',
+                    'https://get.geojs.io/v1/ip/geo.json',
+                    'https://ipapi.co/json/'
+                ];
+
+                for (const apiUrl of APIs) {
+                    try {
+                        const response = await fetch(apiUrl, { timeout: 3000 });
+                        if (response.ok) {
+                            const data = await response.json();
+                            if (data.city || data.region) {
+                                const cidade = data.city || 'Brasil';
+                                const regiao = (data.region || 'Sao Paulo').toLowerCase();
+                                
+                                // Detecção de estado
+                                let estado = 'SP'; // Padrão
+                                
+                                if (regiao.includes('são paulo') || regiao.includes('sp')) estado = 'SP';
+                                else if (regiao.includes('rio de janeiro') || regiao.includes('rj')) estado = 'RJ';
+                                else if (regiao.includes('minas gerais') || regiao.includes('mg')) estado = 'MG';
+                                else if (regiao.includes('bahia') || regiao.includes('ba')) estado = 'BA';
+                                else if (regiao.includes('rio grande do sul') || regiao.includes('rs')) estado = 'RS';
+                                else if (regiao.includes('paraná') || regiao.includes('pr')) estado = 'PR';
+                                else if (regiao.includes('ceará') || regiao.includes('ce')) estado = 'CE';
+                                else if (regiao.includes('pernambuco') || regiao.includes('pe')) estado = 'PE';
+                                else if (regiao.includes('santa catarina') || regiao.includes('sc')) estado = 'SC';
+                                else if (regiao.includes('espírito santo') || regiao.includes('es')) estado = 'ES';
+                                
+                                return { estado, cidade };
+                            }
+                        }
+                    } catch (apiError) {
+                        continue;
+                    }
+                }
+                
+                // Fallback se todas as APIs falharem
+                return { estado: 'SP', cidade: 'Brasil' };
+                
+            } catch (error) {
+                return { estado: 'SP', cidade: 'Brasil' };
+            }
+        }
+
+        // ==================== SEQUÊNCIA DO AVATAR ====================
+        
+        async function startAvatarSequence() {
+            const message = document.getElementById('avatarMessage');
+            
+            // Detectar localização
+            const location = await detectUserLocation();
+            const estadoConfig = ESTADOS_CONFIG[location.estado] || ESTADOS_CONFIG['SP'];
+            
+            // Usar horário local automático (já ajustado pelo navegador)
+            const agora = new Date();
+            const hora = agora.getHours();
+            const dia = agora.getDay();
+            const horaFormatada = `${hora.toString().padStart(2, '0')}:${agora.getMinutes().toString().padStart(2, '0')}`;
+            
+            // Obter contextos temporais
+            const timeMessage = TIME_CONTEXTS.getTimeMessage(hora);
+            const dayMessage = TIME_CONTEXTS.getDayMessage(dia);
+            
+            // Sequência otimizada de 5 mensagens
+            const messages = [
+                estadoConfig.sigla,                                    // "SP"
+                `É ${estadoConfig.gentilico} ${estadoConfig.expressao}!`, // "É Paulista nossa!"
+                `${horaFormatada} - ${timeMessage} ${dayMessage}`,     // "15:30 - Comecinho da tarde! Soninho pós-almoço? Sextou!"
+                "Descobri seu padrão...",                              // Hook direto
+                "Vamos conversar abaixo 👇"                           // CTA
+            ];
+
+            // Executar sequência
+            for (let i = 0; i < messages.length; i++) {
+                message.classList.remove('show');
+                await sleep(150);
+                
+                message.textContent = messages[i];
+                message.classList.add('show');
+                if (i === 1) message.classList.add('shock');
+                
+                // Timing: normal 1.5s, linha longa 2.5s
+                await sleep(i === 2 ? 2500 : 1500);
+            }
+
+            // Mostrar CTA após sequência
+            setTimeout(() => showCTA(location), 1000);
+        }
+
+        function showCTA(location) {
+            const ctaSection = document.getElementById('ctaSection');
+            const ctaTitle = document.getElementById('ctaTitle');
+            const ctaSubtitle = document.getElementById('ctaSubtitle');
+            const ctaButton = document.getElementById('ctaButton');
+            const ctaDisclaimer = document.getElementById('ctaDisclaimer');
+            
+            const estadoConfig = ESTADOS_CONFIG[location.estado] || ESTADOS_CONFIG['SP'];
+            const ctaConfig = CTAS_PERSONALIZADOS[location.estado] || CTAS_PERSONALIZADOS['default'];
+            
+            ctaTitle.textContent = ctaConfig.titulo;
+            ctaSubtitle.textContent = ctaConfig.subtitulo;
+            ctaButton.textContent = ctaConfig.botao;
+            ctaDisclaimer.textContent = `Transformação mental personalizada para ${estadoConfig.gentilico}s`;
+            
+            ctaSection.classList.add('active');
+            
+            setTimeout(() => {
+                ctaSection.scrollIntoView({ behavior: 'smooth' });
+            }, 500);
+        }
+
+        // ==================== TRANSIÇÃO PARA TYPEBOT ====================
+        
+        function startTypebot() {
+            // Redirecionamento direto para o Typebot
+            window.location.href = 'https://bot.adrianasousa.com/test';
+        }
+
+        // ==================== UTILITÁRIOS ====================
+        
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        // ==================== INICIALIZAÇÃO ====================
+        
+        // Preload de imagens
+        const preloadImages = () => {
+            const imageUrls = [
+                'https://pub-e40d9ad14e5a4e13b2bfe7e2ae67bb03.r2.dev/Adriana-vmake%20(1).png',
+                'https://pub-e40d9ad14e5a4e13b2bfe7e2ae67bb03.r2.dev/Imagem%20do%20WhatsApp%20de%202025-09-23%20%C3%A0(s)%2015.21.04_61513830-vmake.jpg'
+            ];
+            
+            imageUrls.forEach(url => {
+                const img = new Image();
+                img.src = url;
+            });
+        };
+        
+        // Iniciar aplicação
+        preloadImages();
+        
+        setTimeout(() => {
+            startAvatarSequence();
+        }, 1000);
+        
+    </script>
+</body>
+</html>
